@@ -1,0 +1,121 @@
+{
+	"version": 6,
+	"cmakeMinimumRequired": {
+		"major": 3,
+		"minor": 29,
+		"patch": 0
+	},
+	"configurePresets": [
+		{
+			"name": "common",
+			"hidden": true,
+			"binaryDir": "${sourceDir}/build/${presetName}"
+		},
+		{
+			"name": "mac",
+			"hidden": true,
+			"cacheVariables": {
+				"CMAKE_OSX_DEPLOYMENT_TARGET": "14.5",
+				"CMAKE_APPLE_SILICON_PROCESSOR": "arm64",
+				"CMAKE_OSX_ARCHITECTURES": "arm64"
+			},
+			"toolset": {
+				"value": "buildsystem=12",
+				"strategy": "external"
+			}
+		},
+		{
+			"name": "win",
+			"hidden": true,
+			"cacheVariables": {
+			},
+			"architecture": {
+				"value": "x64",
+				"strategy": "external"
+			},
+			"toolset": {
+				"value": "v143",
+				"strategy": "external"
+			}
+		},
+		{
+			"name": "debug",
+			"hidden": true,
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug"
+			}
+		},
+		{
+			"name": "release",
+			"hidden": true,
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release"
+			}
+		},
+		{
+			"name": "profile",
+			"hidden": true,
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Profile",
+				"TRACY_ENABLE": "ON"
+			}
+		},
+		{
+			"name": "project",
+			"hidden": true
+		},
+		{
+			"name": "mac_ninja_debug",
+			"hidden": false,
+			"generator": "Ninja",
+			"inherits": [
+				"common",
+				"mac",
+				"debug",
+				"project"
+			]
+		},
+		{
+			"name": "mac_ninja_release",
+			"hidden": false,
+			"generator": "Ninja",
+			"inherits": [
+				"common",
+				"mac",
+				"release",
+				"project"
+			]
+		},
+		{
+			"name": "mac_ninja_profile",
+			"hidden": false,
+			"generator": "Ninja",
+			"inherits": [
+				"common",
+				"mac",
+				"profile",
+				"project"
+			]
+		},
+		{
+			"name": "mac_xcode",
+			"hidden": false,
+			"generator": "Xcode",
+			"inherits": [
+				"common",
+				"mac",
+				"project"
+			]
+		},
+		{
+			"name": "win_msvc",
+			"hidden": false,
+			"generator": "Visual Studio 17 2022",
+			"inherits": [
+				"common",
+				"win",
+				"project"
+			]
+		}
+	]
+}

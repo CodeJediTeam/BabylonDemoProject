@@ -1,0 +1,26 @@
+# MS Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# MS Visual Studio Code
+.vscode
+
+# JetBrains
+.idea
+
+# MacOS
+.DS_Store
+
+# Bin
+build/
+bin/
+lib/
+
+# Env
+.venv
+
+# Misc
+tmp/
