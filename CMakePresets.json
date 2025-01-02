@@ -5,54 +5,10 @@
 		"minor": 30,
 		"patch": 0
 	},
+	"include": [
+		"ext/Babylon/BabylonCMakePresets.json"
+	],
 	"configurePresets": [
-		{
-			"name": "common",
-			"hidden": true,
-			"binaryDir": "${sourceDir}/build/${presetName}"
-		},
-		{
-			"name": "win",
-			"hidden": true,
-			"architecture": {
-				"value": "x64",
-				"strategy": "external"
-			}
-		},
-		{
-			"name": "mac",
-			"hidden": true,
-			"toolset": {
-				"value": "buildsystem=12",
-				"strategy": "external"
-			},
-			"cacheVariables": {
-				"CMAKE_OSX_DEPLOYMENT_TARGET": "14.5",
-				"CMAKE_APPLE_SILICON_PROCESSOR": "arm64",
-				"CMAKE_OSX_ARCHITECTURES": "arm64"
-			}
-		},
-		{
-			"name": "debug",
-			"hidden": true,
-			"cacheVariables": {
-				"CMAKE_BUILD_TYPE": "Debug"
-			}
-		},
-		{
-			"name": "release",
-			"hidden": true,
-			"cacheVariables": {
-				"CMAKE_BUILD_TYPE": "Release"
-			}
-		},
-		{
-			"name": "profile",
-			"hidden": true,
-			"cacheVariables": {
-				"CMAKE_BUILD_TYPE": "Profile"
-			}
-		},
 		{
 			"name": "project",
 			"hidden": true
@@ -60,89 +16,40 @@
 		{
 			"name": "win_vs_msvc",
 			"hidden": false,
-			"generator": "Visual Studio 17 2022",
 			"inherits": [
-				"common",
-				"win",
+				"babylon_win_vs_msvc",
 				"project"
-			],
-			"toolset": {
-				"value": "v143",
-				"strategy": "external"
-			}
+			]
 		},
 		{
 			"name": "win_vs_clang",
 			"hidden": false,
-			"generator": "Visual Studio 17 2022",
 			"inherits": [
-				"common",
-				"win",
+				"babylon_win_vs_clang",
 				"project"
-			],
-			"toolset": {
-				"value": "ClangCL",
-				"strategy": "external"
-			},
-			"cacheVariables": {
-				"CMAKE_GENERATOR_TOOLSET": "ClangCL"
-			}
-		},
-		{
-			"name": "win_ninja_clang",
-			"hidden": true,
-			"generator": "Ninja",
-			"inherits": [
-				"common",
-				"win",
-				"project"
-			],
-			"cacheVariables": {
-				"CMAKE_C_COMPILER": "clang-cl",
-  				"CMAKE_CXX_COMPILER": "clang-cl"
-			}
+			]
 		},
 		{
 			"name": "win_ninja_clang_debug",
 			"hidden": false,
 			"inherits": [
-				"win_ninja_clang",
-				"debug"
+				"babylon_win_ninja_clang_debug",
+				"project"
 			]
 		},
 		{
 			"name": "win_ninja_clang_release",
 			"hidden": false,
 			"inherits": [
-				"win_ninja_clang",
-				"release"
+				"babylon_win_ninja_clang_release",
+				"project"
 			]
 		},
 		{
 			"name": "win_ninja_clang_profile",
 			"hidden": false,
 			"inherits": [
-				"win_ninja_clang",
-				"profile"
-			]
-		},
-		{
-			"name": "mac_xcode",
-			"hidden": false,
-			"generator": "Xcode",
-			"inherits": [
-				"common",
-				"mac",
-				"project"
-			]
-		},
-		{
-			"name": "mac_ninja",
-			"hidden": false,
-			"generator": "Ninja",
-			"inherits": [
-				"common",
-				"mac",
+				"babylon_win_ninja_clang_profile",
 				"project"
 			]
 		},
@@ -150,24 +57,24 @@
 			"name": "mac_ninja_debug",
 			"hidden": false,
 			"inherits": [
-				"mac_ninja",
-				"debug"
+				"babylon_mac_ninja_debug",
+				"project"
 			]
 		},
 		{
 			"name": "mac_ninja_release",
 			"hidden": false,
 			"inherits": [
-				"mac_ninja",
-				"release"
+				"babylon_mac_ninja_release",
+				"project"
 			]
 		},
 		{
 			"name": "mac_ninja_profile",
 			"hidden": false,
 			"inherits": [
-				"mac_ninja",
-				"profile"
+				"babylon_mac_ninja_profile",
+				"project"
 			]
 		}
 	]
