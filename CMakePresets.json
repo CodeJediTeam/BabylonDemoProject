@@ -6,7 +6,7 @@
 		"patch": 0
 	},
 	"include": [
-		"ext/Babylon/BabylonCMakePresets.json"
+		"ext/Babylon/tools/cmake/presets.json"
 	],
 	"configurePresets": [
 		{
