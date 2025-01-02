@@ -2,7 +2,7 @@
 	"version": 6,
 	"cmakeMinimumRequired": {
 		"major": 3,
-		"minor": 29,
+		"minor": 30,
 		"patch": 0
 	},
 	"configurePresets": [
@@ -12,30 +12,24 @@
 			"binaryDir": "${sourceDir}/build/${presetName}"
 		},
 		{
-			"name": "mac",
+			"name": "win",
 			"hidden": true,
-			"cacheVariables": {
-				"CMAKE_OSX_DEPLOYMENT_TARGET": "14.5",
-				"CMAKE_APPLE_SILICON_PROCESSOR": "arm64",
-				"CMAKE_OSX_ARCHITECTURES": "arm64"
-			},
-			"toolset": {
-				"value": "buildsystem=12",
+			"architecture": {
+				"value": "x64",
 				"strategy": "external"
 			}
 		},
 		{
-			"name": "win",
+			"name": "mac",
 			"hidden": true,
-			"cacheVariables": {
-			},
-			"architecture": {
-				"value": "x64",
-				"strategy": "external"
-			},
 			"toolset": {
-				"value": "v143",
+				"value": "buildsystem=12",
 				"strategy": "external"
+			},
+			"cacheVariables": {
+				"CMAKE_OSX_DEPLOYMENT_TARGET": "14.5",
+				"CMAKE_APPLE_SILICON_PROCESSOR": "arm64",
+				"CMAKE_OSX_ARCHITECTURES": "arm64"
 			}
 		},
 		{
@@ -56,8 +50,7 @@
 			"name": "profile",
 			"hidden": true,
 			"cacheVariables": {
-				"CMAKE_BUILD_TYPE": "Profile",
-				"TRACY_ENABLE": "ON"
+				"CMAKE_BUILD_TYPE": "Profile"
 			}
 		},
 		{
@@ -65,36 +58,72 @@
 			"hidden": true
 		},
 		{
-			"name": "mac_ninja_debug",
+			"name": "win_vs_msvc",
 			"hidden": false,
+			"generator": "Visual Studio 17 2022",
+			"inherits": [
+				"common",
+				"win",
+				"project"
+			],
+			"toolset": {
+				"value": "v143",
+				"strategy": "external"
+			}
+		},
+		{
+			"name": "win_vs_clang",
+			"hidden": false,
+			"generator": "Visual Studio 17 2022",
+			"inherits": [
+				"common",
+				"win",
+				"project"
+			],
+			"toolset": {
+				"value": "ClangCL",
+				"strategy": "external"
+			},
+			"cacheVariables": {
+				"CMAKE_GENERATOR_TOOLSET": "ClangCL"
+			}
+		},
+		{
+			"name": "win_ninja_clang",
+			"hidden": true,
 			"generator": "Ninja",
 			"inherits": [
 				"common",
-				"mac",
-				"debug",
+				"win",
 				"project"
+			],
+			"cacheVariables": {
+				"CMAKE_C_COMPILER": "clang-cl",
+  				"CMAKE_CXX_COMPILER": "clang-cl"
+			}
+		},
+		{
+			"name": "win_ninja_clang_debug",
+			"hidden": false,
+			"inherits": [
+				"win_ninja_clang",
+				"debug"
 			]
 		},
 		{
-			"name": "mac_ninja_release",
+			"name": "win_ninja_clang_release",
 			"hidden": false,
-			"generator": "Ninja",
 			"inherits": [
-				"common",
-				"mac",
-				"release",
-				"project"
+				"win_ninja_clang",
+				"release"
 			]
 		},
 		{
-			"name": "mac_ninja_profile",
+			"name": "win_ninja_clang_profile",
 			"hidden": false,
-			"generator": "Ninja",
 			"inherits": [
-				"common",
-				"mac",
-				"profile",
-				"project"
+				"win_ninja_clang",
+				"profile"
 			]
 		},
 		{
@@ -108,13 +137,37 @@
 			]
 		},
 		{
-			"name": "win_msvc",
+			"name": "mac_ninja",
 			"hidden": false,
-			"generator": "Visual Studio 17 2022",
+			"generator": "Ninja",
 			"inherits": [
 				"common",
-				"win",
+				"mac",
 				"project"
+			]
+		},
+		{
+			"name": "mac_ninja_debug",
+			"hidden": false,
+			"inherits": [
+				"mac_ninja",
+				"debug"
+			]
+		},
+		{
+			"name": "mac_ninja_release",
+			"hidden": false,
+			"inherits": [
+				"mac_ninja",
+				"release"
+			]
+		},
+		{
+			"name": "mac_ninja_profile",
+			"hidden": false,
+			"inherits": [
+				"mac_ninja",
+				"profile"
 			]
 		}
 	]
