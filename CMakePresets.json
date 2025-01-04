@@ -1,10 +1,10 @@
 {
-	"version": 6,
-	"cmakeMinimumRequired": {
-		"major": 3,
-		"minor": 30,
-		"patch": 0
-	},
+    "version": 10,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 31,
+        "patch": 0
+    },
     "include": [
         "ext/Babylon/tools/cmake/presets/win.json",
         "ext/Babylon/tools/cmake/presets/mac.json"
