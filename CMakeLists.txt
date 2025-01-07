@@ -10,7 +10,9 @@ add_subdirectory(ext/Babylon Babylon)
 # App
 babylon_register_unit(BabylonDemoProject
     UNIT_TYPE App
+    BUILD_CFG tools/cmake/cfg.cmake
     OUTPUT_DIR bin
+    PCH src/pch.h
     INCLUDE_DIRS src
     SOURCE_SEARCH_MASKS src/*.h src/*.cpp
     DEPEND_UNITS BabylonSystem BabylonUI
