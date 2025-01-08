@@ -6,6 +6,10 @@ cmake_minimum_required(VERSION 3.30.0 FATAL_ERROR)
 # Babylon
 Project(BabylonApp)
 add_subdirectory(ext/Babylon Babylon)
+#if(BABYLON_OS_MAC)
+#    enable_language(OBJC)
+#    enable_language(OBJCXX)
+#endif()
 
 # App
 babylon_register_unit(BabylonDemoProject
