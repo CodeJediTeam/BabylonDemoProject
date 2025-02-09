@@ -3,4 +3,4 @@
 #include <App/AppConfigurator.h>
 #include <System/Babylon.h>
 
-BABYLON_ENTRY_POINT(App::AppConfigurator)
+BN_ENTRY_POINT(App::AppConfigurator)

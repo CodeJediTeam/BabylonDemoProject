@@ -8,7 +8,7 @@ Project(Babylon)
 include(ext/Babylon/tools/cmake/babylon.cmake)
 
 # App
-babylon_register_unit(BabylonDemoProject
+bn_register_unit(BabylonDemoProject
     UNIT_TYPE App
     BUILD_CFG tools/cmake/cfg.cmake
     OUTPUT_DIR bin
@@ -18,4 +18,4 @@ babylon_register_unit(BabylonDemoProject
     DEPEND_UNITS BabylonSystem BabylonUI
 )
 
-babylon_enable_unit(BabylonDemoProject)
+bn_enable_unit(BabylonDemoProject)
